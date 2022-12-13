@@ -39,6 +39,7 @@ const App = () => {
       // check for the first charater of each word is a vowel
       // if it is then add (way) to the end 
       let vowels = ["a", "e", "i", "o", "u"]
+      for (let i = 0; i < eachWord.length; i++)
       if (vowels.includes(eachWord[0])){
         eachWord = eachWord.concat("way")
       }
@@ -66,7 +67,33 @@ const App = () => {
         // add "ay" at the end
         eachWord = restOfWord.concat(sliced, "ay")
       }
-      
+      // story 3 : y-fuctionality
+      // Sometimes Y: Shift the letters before the y to the end:
+      // fry = yfr , Add “ay” to the end: yfray 
+      // check eachWord for a "y"
+        if (eachWord.indexOf('y') !== -1){
+          let foundVowel = false
+          for (let i = 0; i < eachWord.length; i++ ){
+            if (vowels.includes(eachWord[i])){
+              foundVowel = true
+              break;
+            }
+          }
+          if (!foundVowel){
+            let idx = eachWord.indexOf('y')
+            let vowel1 = eachWord.slice(0, idx)
+            let vowel2 = eachWord.slice(idx)
+            eachWord = vowel2.concat(vowel1 , "ay")
+          }
+          // loop through each word
+          // if current letter is in vowels
+          // save index to variable 
+          // brake
+        }
+      // check if eachWord has no vowels
+      // save the slice up to the "y" variable
+      // save the rest of each word to a variable
+      // add the slice and "ay" too the rest of each word  
       // ACTION ITEM: this return will be the output of your Pig Latin'd code
       return eachWord
     })
