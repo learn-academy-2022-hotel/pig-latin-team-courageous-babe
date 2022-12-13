@@ -33,21 +33,40 @@ const App = () => {
       console.log("vowelsArray:", vowelsArray)
 
       // ACTION ITEM: your Pig Latin logic goes here!
+      
+      // STEP 1 VOWEL FUNCTIONALITY
       // .map of the words array inside the map function 
       // check for the first charater of each word is a vowel
       // if it is then add (way) to the end 
-       // let newArrayOfUserInput = arrayOfUserInput.map  (eachWord => {
-        let vowels = ["a", "e", "i", "o", "u"]
-        console.log("WORD =",eachWord[0])
-        if (vowels.includes (eachWord[0])){
-         return eachWord.concat("way")
-        }else{
-          return eachWord
-        }
-        
-      // })
-      // console.log("modified array =", newArrayOfUserInput)
-
+      let vowels = ["a", "e", "i", "o", "u"]
+      if (vowels.includes(eachWord[0])){
+        eachWord = eachWord.concat("way")
+      }
+      
+      // STEP 2 QU FUNCTIONLITY
+      // words that have "qu" in the first syllable translated by moving all the consonant and the "u" to the end and add "ay".
+      // Pseudo
+      // for words that have "qu" identify the placement of the first non-vowel
+      // shift the letters before the non-u vowel to the end
+      // eg "question" estion-qu-ay
+      //    "squeal" eal-squ-ay
+      //    "squtkjslkdat" tkjslkdat-squ-ay
+      //    "queen" een-qu-ay
+      // add "ay" at the end
+      if (eachWord.includes("qu")) {
+        // console.log(`${eachWord} includes a qu`)
+        // console.log(eachWord.indexOf("qu"))
+        // find the starting index of "qu"
+        let idx = eachWord.indexOf("qu")
+        // make variable to add to string by: splice starting at 0 and up to index of "qu" + 2
+        let sliced = eachWord.slice(0, idx+2)
+        // initialize a variable with the rest of eachWord
+        let restOfWord = eachWord.slice(idx+2)
+        // add sliced varible to the modified eachWord
+        // add "ay" at the end
+        eachWord = restOfWord.concat(sliced, "ay")
+      }
+      
       // ACTION ITEM: this return will be the output of your Pig Latin'd code
       return eachWord
     })
