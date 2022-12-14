@@ -39,7 +39,6 @@ const App = () => {
       // check for the first charater of each word is a vowel
       // if it is then add (way) to the end 
       let vowels = ["a", "e", "i", "o", "u"]
-      for (let i = 0; i < eachWord.length; i++)
       if (vowels.includes(eachWord[0])){
         eachWord = eachWord.concat("way")
       }
@@ -73,27 +72,51 @@ const App = () => {
       // check eachWord for a "y"
         if (eachWord.indexOf('y') !== -1){
           let foundVowel = false
+          // check if eachWord has no vowels
+          // loop through each word
+          // if current letter is in vowels
+          // save index to variable 
+          // break
           for (let i = 0; i < eachWord.length; i++ ){
             if (vowels.includes(eachWord[i])){
               foundVowel = true
-              break;
+              break
             }
           }
           if (!foundVowel){
             let idx = eachWord.indexOf('y')
+            // save the slice up to the "y" variable
             let vowel1 = eachWord.slice(0, idx)
+            // save the rest of each word to a variable
             let vowel2 = eachWord.slice(idx)
+            // add the slice and "ay" too the rest of each word  
             eachWord = vowel2.concat(vowel1 , "ay")
           }
-          // loop through each word
-          // if current letter is in vowels
-          // save index to variable 
-          // brake
         }
-      // check if eachWord has no vowels
-      // save the slice up to the "y" variable
-      // save the rest of each word to a variable
-      // add the slice and "ay" too the rest of each word  
+
+        // STEP 4 CONSONANT FUNCTIONALITY
+        // Shift the letter before the vowel to the end:
+        // ineapplep
+        // ineapplepay
+        // Add “ay” to the end:
+        // make a fn to see if eachWord starts with a consonant
+        // if first letter is a consonant
+        if (!vowels.includes(eachWord[0]) && eachWord[0] !== "y") {
+          console.log('word with first letter consonant', eachWord)
+        //   // find the index of the first vowel
+          for (let i = 1; i < eachWord.length; i++) {
+            if (vowels.includes(eachWord[i])) {
+              let firstPart = eachWord.slice(0, i)
+              let secondPart = eachWord.slice(i)
+              eachWord = secondPart.concat(firstPart, "ay")
+              break
+            }
+        //     // create a variable holding the first part of eachWord
+        //     // create a variable holding the second part of eachWord
+        //     // add the first part and "ay" to the second part
+        }
+      }
+
       // ACTION ITEM: this return will be the output of your Pig Latin'd code
       return eachWord
     })
